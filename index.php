@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<!--
+
+source: https://symfonycasts.com/screencast/php-ep1/arrays2#play
+
+bootstrap: https://www.w3schools.com/bootstrap/bootstrap_jumbotron_header.asp
+
+-->
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -66,6 +74,8 @@
     <div class="jumbotron">
         <div class="container">
             <?php
+
+            // Variables and functions
             $messageVariable = ucwords('!message Variable');
             $pupCount = rand(0, 20);
             ?>
@@ -79,25 +89,70 @@
     </div>
 
     <?php
-        $pet1 = 'petName1';
-        $pet2 = 'petName2';
-        $pet3 = 'petName3';
+    // Arrays
+    $pet1 = 'petName1';
+    $pet2 = 'petName2';
+    $pet3 = 'petName3';
 
-        // creating arrays
-        $pets = array($pet1, $pet2, $pet3);
-        $pets2 = [$pet1, $pet3];
-        var_dump($pets);
+    // creating arrays
+    $pets = array($pet1, $pet2, $pet3);
+    $pets2 = [$pet1, $pet3];
+    var_dump($pets);
 
-        foreach ($pets2 as $arrayObj) {
-            echo "<br>" . $arrayObj;
-        }
+    foreach ($pets2 as $arrayObj) {
+        echo "<br>" . $arrayObj;
+    }
+    // Arrays - exercise
+    $walker1 = 'Kitty';
+    $walker2 = 'Tiger';
+    $walker3 = 'Jay';
+    $dogWalkers = [$walker1, $walker2, $walker3];
+
+    foreach($dogWalkers as $walker) {
+        echo '<h3>';
+        echo $walker . '<br>';
+        echo '<button>Schedule me</button>';
+        echo '</h3>';
+    }
+
+    // Associative Arrays
+    $pancake = array(
+        'name'=> 'Pancake',
+        'age' => '1 year',
+        'weight' => 9,
+        'bio' => 'Eating & sleeping',
+        'filename' => 'pancake.png'
+    );
+    $pancake['breed'] ='Bulldog';
+
+    $pets[] = 'newPuppy';
+
     ?>
 
     <div class="container">
         <div class="row">
+            <div class="col-lg-3 pet-list-item">
+                <h2><?php echo $pancake['name']; ?></h2>
+                <img src="/images/pancake.png" class="img-rounded" />
+
+                <blockquote class="pet-details">
+            <span class="label label-info">
+                <?php
+                echo $pancake['breed'];
+                ?>
+            </span>
+                    <?php echo $pancake['age']; ?>
+                    <?php echo $pancake['weight']; ?> lbs
+                </blockquote>
+
+                <p>
+                    <?php echo $pancake['bio'] ?>
+                </p>
+            </div>
+
             <?php
             foreach($pets as $pet){
-                echo '<div class="col-lg-4">';
+                echo '<div class="col-lg-3">';
                 echo '<h2>';
                 echo $pet;
                 echo '</h2>';
@@ -107,40 +162,6 @@
                 echo '</div>';
             }
             ?>
-
-            <div class="col-lg-4">
-                <h2><?php
-                    echo $pets[0];
-                    ?></h2>
-
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                    condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                    euismod. Donec sed odio dui. </p>
-
-                <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2><?php
-                    echo $pet2;
-                    ?></h2>
-
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                    condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                    euismod. Donec sed odio dui. </p>
-
-                <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2><?php
-                    echo $pet3;
-                    ?></h2>
-
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                    porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-                    fermentum massa justo sit amet risus.</p>
-
-                <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
-            </div>
         </div>
 
         <hr>
