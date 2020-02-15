@@ -66,10 +66,11 @@
     <div class="jumbotron">
         <div class="container">
             <?php
-            $messageVariable = 'Message Variable';
-            $pupCount = 50;
+            $messageVariable = ucwords('!message Variable');
+            $pupCount = rand(0, 20);
             ?>
-            <h1><?php echo $messageVariable; ?></h1>
+            <h1><?php echo strtoupper(strtolower($messageVariable));
+                echo strtolower(" !"); ?></h1>
 
             <p>There are <?php echo $pupCount?> puppies.</p>
 
@@ -77,10 +78,40 @@
         </div>
     </div>
 
+    <?php
+        $pet1 = 'petName1';
+        $pet2 = 'petName2';
+        $pet3 = 'petName3';
+
+        // creating arrays
+        $pets = array($pet1, $pet2, $pet3);
+        $pets2 = [$pet1, $pet3];
+        var_dump($pets);
+
+        foreach ($pets2 as $arrayObj) {
+            echo "<br>" . $arrayObj;
+        }
+    ?>
+
     <div class="container">
         <div class="row">
+            <?php
+            foreach($pets as $pet){
+                echo '<div class="col-lg-4">';
+                echo '<h2>';
+                echo $pet;
+                echo '</h2>';
+                echo '<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+                    condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
+                    euismod. Donec sed odio dui. </p>';
+                echo '</div>';
+            }
+            ?>
+
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2><?php
+                    echo $pets[0];
+                    ?></h2>
 
                 <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
                     condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
@@ -89,7 +120,9 @@
                 <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
             </div>
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2><?php
+                    echo $pet2;
+                    ?></h2>
 
                 <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
                     condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
@@ -98,7 +131,9 @@
                 <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
             </div>
             <div class="col-lg-4">
-                <h2>Heading</h2>
+                <h2><?php
+                    echo $pet3;
+                    ?></h2>
 
                 <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
                     porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
