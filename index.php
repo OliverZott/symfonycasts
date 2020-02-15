@@ -65,11 +65,13 @@
 
     <div class="jumbotron">
         <div class="container">
-            <h1>Hello, world!</h1>
+            <?php
+            $messageVariable = 'Message Variable';
+            $pupCount = 50;
+            ?>
+            <h1><?php echo $messageVariable; ?></h1>
 
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called the
-                hero unit and three supporting pieces of content. Use it as a starting point to create something more
-                unique.</p>
+            <p>There are <?php echo $pupCount?> puppies.</p>
 
             <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
         </div>
