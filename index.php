@@ -1,6 +1,4 @@
 <?php
-
-
 // Arrays
 $pet1 = array(
     'name'=> 'Pet1',
@@ -66,8 +64,8 @@ $newPuppy = array(
     'bio' => 'Eating & sleeping',
     'filename' => 'pet3.png'
 );
-$pets[] = $pancake;
 
+$pets[] = $pancake;
 $pets = array_reverse($pets);
 
 // Arrays of Arrays
@@ -78,10 +76,17 @@ var_dump($pets[1]['breed']).die();
 */
 
 
-// Variables and functions
-$messageVariable = ucwords('!message Variable');
-$pupCount = count($pets);
+// JSON, Files and Boolean
+$petsJson = file_get_contents('./data/pets.json');
+// associate array instead of object
+$petsArray = json_decode($petsJson, true);
 
+$messageVariable = ucwords('!message Variable');
+$pupCount = count($petsArray);
+
+$fileName = './data/output.txt';
+file_put_contents($fileName, 'test test', FILE_APPEND );
+file_put_contents($fileName, 'test2 test2', FILE_APPEND );
 
 ?>
 
@@ -175,7 +180,7 @@ bootstrap: https://www.w3schools.com/bootstrap/bootstrap_jumbotron_header.asp
     <div class="container">
         <div class="row">
             <!-- close php to write inside html instead php -->
-            <?php foreach ($pets as $cutePet) { ?>
+            <?php foreach ($petsArray as $cutePet) { ?>
             <div class="col-lg-3 pet-list-item">
                 <h2><?php echo $cutePet['name']; ?></h2>
                 <img src="./images/<?php echo $cutePet['filename'] ?>" class="img-rounded" />
