@@ -1,3 +1,90 @@
+<?php
+
+
+// Arrays
+$pet1 = array(
+    'name'=> 'Pet1',
+    'breed' => 'Bichon',
+    'age' => '1 year',
+    'weight' => 1,
+    'bio' => 'Eating & sleeping',
+    'filename' => 'pet1.png'
+);
+$pet2 = array(
+    'name'=> 'Pet2',
+    'breed' => 'Pug',
+    'age' => '2 year',
+    'weight' => 2,
+    'bio' => 'Eating & sleeping',
+    'filename' => 'pet2.png'
+);
+$pet3 = array(
+    'name'=> 'Pet3',
+    'breed' => 'Bengal',
+    'age' => '3 year',
+    'weight' => 3,
+    'bio' => 'Eating & sleeping',
+    'filename' => 'pet3.png'
+);
+
+
+// creating arrays
+$pets = array($pet1, $pet2, $pet3);
+$pets2 = [$pet1, $pet3];
+
+// Arrays - exercise
+$walker1 = 'Kitty';
+$walker2 = 'Tiger';
+$walker3 = 'Jay';
+$dogWalkers = [$walker1, $walker2, $walker3];
+
+foreach($dogWalkers as $walker) {
+    echo '<h3>';
+    echo $walker . '<br>';
+    echo '<button>Schedule me</button>';
+    echo '</h3>';
+}
+
+
+// Associative Arrays
+$pancake = array(
+    'name'=> 'Pancake',
+    'age' => '1 year',
+    'weight' => 9,
+    'bio' => 'Eating & sleeping',
+    'filename' => 'pancake.png'
+);
+$pancake['breed'] ='Bulldog';
+
+
+// add item to array
+$newPuppy = array(
+    'name'=> 'PnewPuppy',
+    'breed' => 'Shark',
+    'age' => '10 year',
+    'weight' => 10,
+    'bio' => 'Eating & sleeping',
+    'filename' => 'pet3.png'
+);
+$pets[] = $pancake;
+
+$pets = array_reverse($pets);
+
+// Arrays of Arrays
+// use .die() to suppress rest of code
+/*
+var_dump($pets[1]);
+var_dump($pets[1]['breed']).die();
+*/
+
+
+// Variables and functions
+$messageVariable = ucwords('!message Variable');
+$pupCount = count($pets);
+
+
+?>
+
 <!DOCTYPE html>
 <!--
 
@@ -71,14 +158,10 @@ bootstrap: https://www.w3schools.com/bootstrap/bootstrap_jumbotron_header.asp
         </div>
     </div>
 
+
     <div class="jumbotron">
         <div class="container">
-            <?php
 
-            // Variables and functions
-            $messageVariable = ucwords('!message Variable');
-            $pupCount = rand(0, 20);
-            ?>
             <h1><?php echo strtoupper(strtolower($messageVariable));
                 echo strtolower(" !"); ?></h1>
 
@@ -88,73 +171,38 @@ bootstrap: https://www.w3schools.com/bootstrap/bootstrap_jumbotron_header.asp
         </div>
     </div>
 
-    <?php
-    // Arrays
-    $pet1 = 'petName1';
-    $pet2 = 'petName2';
-    $pet3 = 'petName3';
-
-    // creating arrays
-    $pets = array($pet1, $pet2, $pet3);
-    $pets2 = [$pet1, $pet3];
-    var_dump($pets);
-
-    foreach ($pets2 as $arrayObj) {
-        echo "<br>" . $arrayObj;
-    }
-    // Arrays - exercise
-    $walker1 = 'Kitty';
-    $walker2 = 'Tiger';
-    $walker3 = 'Jay';
-    $dogWalkers = [$walker1, $walker2, $walker3];
-
-    foreach($dogWalkers as $walker) {
-        echo '<h3>';
-        echo $walker . '<br>';
-        echo '<button>Schedule me</button>';
-        echo '</h3>';
-    }
-
-    // Associative Arrays
-    $pancake = array(
-        'name'=> 'Pancake',
-        'age' => '1 year',
-        'weight' => 9,
-        'bio' => 'Eating & sleeping',
-        'filename' => 'pancake.png'
-    );
-    $pancake['breed'] ='Bulldog';
-
-    $pets[] = 'newPuppy';
-
-    ?>
 
     <div class="container">
         <div class="row">
+            <!-- close php to write inside html instead php -->
+            <?php foreach ($pets as $cutePet) { ?>
             <div class="col-lg-3 pet-list-item">
-                <h2><?php echo $pancake['name']; ?></h2>
-                <img src="/images/pancake.png" class="img-rounded" />
+                <h2><?php echo $cutePet['name']; ?></h2>
+                <img src="./images/<?php echo $cutePet['filename'] ?>" class="img-rounded" />
 
                 <blockquote class="pet-details">
-            <span class="label label-info">
-                <?php
-                echo $pancake['breed'];
-                ?>
-            </span>
-                    <?php echo $pancake['age']; ?>
-                    <?php echo $pancake['weight']; ?> lbs
+                    <span class="label label-info">
+                        <?php
+                        echo $cutePet['breed'];
+                        ?>
+                    </span>
+                    <?php echo $cutePet['age']; ?>
+                    <?php echo $cutePet['weight']; ?> lbs
                 </blockquote>
 
                 <p>
-                    <?php echo $pancake['bio'] ?>
+                    <?php echo $cutePet['bio'] ?>
                 </p>
             </div>
+            <?php } ?>
+        </div>
 
-            <?php
+        <div class="row">
+        <?php
             foreach($pets as $pet){
-                echo '<div class="col-lg-3">';
+                echo '<div class="col-lg-2">';
                 echo '<h2>';
-                echo $pet;
+                echo $pet['name'];
                 echo '</h2>';
                 echo '<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
                     condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
