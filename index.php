@@ -8,26 +8,26 @@ $pet1 = array(
     'bio' => 'Eating & sleeping',
     'filename' => 'pet1.png'
 );
-$pet2 = array(
+$pet2 = [
     'name'=> 'Pet2',
     'breed' => 'Pug',
-    'age' => '2 year',
+    //'age' => '2 year',
     'weight' => 2,
     'bio' => 'Eating & sleeping',
     'filename' => 'pet2.png'
-);
-$pet3 = array(
+];
+$pet3 = [
     'name'=> 'Pet3',
     'breed' => 'Bengal',
     'age' => '3 year',
     'weight' => 3,
     'bio' => 'Eating & sleeping',
     'filename' => 'pet3.png'
-);
+];
 
 
 // creating arrays
-$pets = array($pet1, $pet2, $pet3);
+$pets = [$pet1, $pet2, $pet3];
 $pets2 = [$pet1, $pet3];
 
 // Arrays - exercise
@@ -45,25 +45,25 @@ foreach($dogWalkers as $walker) {
 
 
 // Associative Arrays
-$pancake = array(
+$pancake = [
     'name'=> 'Pancake',
     'age' => '1 year',
     'weight' => 9,
     'bio' => 'Eating & sleeping',
     'filename' => 'pancake.png'
-);
+];
 $pancake['breed'] ='Bulldog';
 
 
 // add item to array
-$newPuppy = array(
+$newPuppy = [
     'name'=> 'PnewPuppy',
     'breed' => 'Shark',
     'age' => '10 year',
     'weight' => 10,
     'bio' => 'Eating & sleeping',
     'filename' => 'pet3.png'
-);
+];
 
 $pets[] = $pancake;
 $pets = array_reverse($pets);
@@ -191,7 +191,16 @@ bootstrap: https://www.w3schools.com/bootstrap/bootstrap_jumbotron_header.asp
                         echo $cutePet['breed'];
                         ?>
                     </span>
-                    <?php echo $cutePet['age']; ?>
+                    <?php
+                    if (!array_key_exists('age', $cutePet) || $cutePet['age'] == '') {
+                        echo 'Unknown';
+                    } elseif ('hidden' == $cutePet['age']) {   // Yoda Conditions (Symfony / WordPress)
+                        echo '(Contact owner for age) ';
+                    } else {
+                        echo $cutePet['age'];
+                    }
+                    ?>
+
                     <?php echo $cutePet['weight']; ?> lbs
                 </blockquote>
 
