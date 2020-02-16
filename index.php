@@ -76,10 +76,17 @@ var_dump($pets[1]['breed']).die();
 */
 
 
-// JSON, Files and Boolean
-$petsJson = file_get_contents('./data/pets.json');
-// associate array instead of object
-$petsArray = json_decode($petsJson, true);
+// Functions
+function get_pets(){
+    // JSON, Files and Boolean
+    $petsJson = file_get_contents('./data/pets.json');
+    // associate array instead of object
+    // $petsArray = json_decode($petsJson, true);
+
+    return json_decode($petsJson, true);
+}
+
+$petsArray = get_pets();
 
 $messageVariable = ucwords('!message Variable');
 $pupCount = count($petsArray);
