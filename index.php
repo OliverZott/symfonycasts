@@ -1,4 +1,8 @@
 <?php
+
+require 'lib/functions.php';
+
+
 // Arrays
 $pet1 = array(
     'name'=> 'Pet1',
