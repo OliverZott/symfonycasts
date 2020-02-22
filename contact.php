@@ -2,7 +2,10 @@
 
 // always use require instead of include!
 // require_once used for classes!
+
 require 'lib/functions.php';
+require 'layout/header.html'
+
 ?>
 
 <h3>Find a new Pet out of
@@ -11,3 +14,5 @@ require 'lib/functions.php';
     ?>
     pets.
 </h3>
+
+<?php require 'layout/footer.html' ?>
