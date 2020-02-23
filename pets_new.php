@@ -4,30 +4,43 @@
 // POST is a super variable -> always available
 // https://www.php.net/manual/de/language.variables.superglobals.php
 
-var_dump($_POST);
 
-$name = $_POST["name"];
-var_dump($name).die;
+/* $_POST / $_SERVER - Examples! */
+// var_dump($_POST);
+// var_dump($_SERVER);
 
-if (isset($_POST['name'])) {
-    $name = $_POST["name"];
-} else {
-    $name = '';
-}
-if (isset($_POST['breed'])) {
-    $breed = $_POST["breed"];
-} else {
-    $breed = '';
-}
-if (isset($_POST['weight'])) {
-    $weight= $_POST["weight"];
-} else {
-    $weight = '';
-}
-if (isset($_POST['bio'])) {
-    $bio = $_POST["bio"];
-} else {
-    $bio= 'empty bio';
+
+// error if web-page button Post is pressed, because no array yet created!
+// $name = $_POST["name"];
+// var_dump($name).die;
+
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    echo "'POST' http request. <br>";
+    if (isset($_POST['name'])) {
+        $name = $_POST["name"];
+    } else {
+        $name = '';
+    }
+    if (isset($_POST['breed'])) {
+        $breed = $_POST["breed"];
+    } else {
+        $breed = '';
+    }
+    if (isset($_POST['weight'])) {
+        $weight = $_POST["weight"];
+    } else {
+        $weight = '';
+    }
+    if (isset($_POST['bio'])) {
+        $bio = $_POST["bio"];
+    } else {
+        $bio = 'empty bio';
+    }
+
+    var_dump($name, $breed, $weight, $bio);
+} elseif ($_SERVER['REQUEST_METHOD'] == "GET") {
+    echo "'GET' http request! <br>";
 }
 
 ?>
