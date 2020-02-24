@@ -2,7 +2,7 @@
 
 require 'lib/functions.php';
 
-
+/*
 // Arrays
 $pet1 = array(
     'name'=> 'Pet1',
@@ -50,7 +50,7 @@ function for_each_example($var_array) {
         echo '</h3>';
     }
 }
-
+*/
 
 // Associative Arrays
 $pancake = [
@@ -85,13 +85,10 @@ var_dump($pets[1]['breed']).die();
 
 
 $petsArray = get_pets();
+// $petsArray[] = $newPuppy;
 
 $messageVariable = ucwords('!message Variable');
 $pupCount = count($petsArray);
-
-$fileName = './data/output.txt';
-file_put_contents($fileName, 'test test', FILE_APPEND );
-file_put_contents($fileName, 'test2 test2', FILE_APPEND );
 
 ?>
 
@@ -147,11 +144,12 @@ file_put_contents($fileName, 'test2 test2', FILE_APPEND );
             <?php } ?>
         </div>
 
+        <!--
         <div class="row">
 
-            <!-- using php without closing -> echo needed (inconvenient) -->
-
             <?php
+            // using php without closing -> echo needed (inconvenient)
+            /*
             foreach($pets as $pet){
                 echo '<div class="col-lg-2">';
                 echo '<h2>';
@@ -162,8 +160,10 @@ file_put_contents($fileName, 'test2 test2', FILE_APPEND );
                     euismod. Donec sed odio dui. </p>';
                 echo '</div>';
             }
+            */
             ?>
         </div>
+        -->
 
         <hr>
 
