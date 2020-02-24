@@ -1,18 +1,14 @@
-<?php require 'layout/header.html' ?>
 
 <?php
+require 'layout/header.html';
+require 'lib/functions.php';
+
 // POST is a super variable -> always available
-// https://www.php.net/manual/de/language.variables.superglobals.php
-
-
-/* $_POST / $_SERVER - Examples! */
 // var_dump($_POST);
 // var_dump($_SERVER);
 
-
-// error if web-page button Post is pressed, because no array yet created!
-// $name = $_POST["name"];
-// var_dump($name).die;
+$user_agent = $_SERVER['HTTP_USER_AGENT'];
+// var_dump($user_agent);
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -21,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $name = $_POST["name"];
     } else {
         $name = '';
+        var_dump().die;   // code can never be reached as long as form exists!?!?!?!?!
     }
     if (isset($_POST['breed'])) {
         $breed = $_POST["breed"];
@@ -36,14 +33,46 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $bio = $_POST["bio"];
     } else {
         $bio = 'empty bio';
+        var_dump($bio);
     }
 
-    var_dump($name, $breed, $weight, $bio);
+    /**
+     * Course 02 - Chapter 04:  Adding puppy to json file, when POST!
+     *
+     * 1) get existing jason file as array
+     * 2) create new puppy (assoc array)
+     * 3) add new pet to pets array
+     * 4) encode array to json file format
+     *
+     */
+
+    $pets = get_pets();
+    var_dump($pets);
+
+    // $age and $filename not yet defined
+    $newPet = array(
+        'name' => $name,
+        'breed' => $breed,
+        'weight' => $weight,
+        'bio' => $bio,
+        'age' => '',
+        'filename' => '',
+    );
+
+    $pets[] = $newPet;
+
+    $pets_json = json_encode($pets, JSON_PRETTY_PRINT);
+    $filename = './data/pets.json';
+    file_put_contents($filename, $pets_json);
+
+    //var_dump($name, $breed, $weight, $bio);
+
 } elseif ($_SERVER['REQUEST_METHOD'] == "GET") {
     echo "'GET' http request! <br>";
 }
 
 ?>
+
 
 <div class="container">
     <div class="row">
@@ -70,7 +99,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <div class="form-group">
                     <!-- Classes are from bootstrap to make it prettier -->
                     <label for="pet_bio" class="control-label">Pet Bio</label>
-                    <input type="text" name="bio" id="pet_bio" class="form-control">
+                    <textarea type="text" name="bio" id="pet_bio" class="form-control">
+                    </textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">
