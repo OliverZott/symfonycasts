@@ -29,5 +29,13 @@
         "bio": "Treats and Snoozin!",
         "filename": "pancake.png",
         "breed": "Bulldog"
+    },
+    {
+        "name": "Kostolany",
+        "breed": "Unknown",
+        "weight": "7",
+        "bio": "Cute, Hungry, sometimes an asshole                    ",
+        "age": "",
+        "filename": ""
     }
 ]
