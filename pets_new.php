@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
      */
 
     $pets = get_pets();
-    var_dump($pets);
+    //var_dump($pets);
 
     // $age and $filename not yet defined
     $newPet = array(
@@ -63,9 +63,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $pets_json = json_encode($pets, JSON_PRETTY_PRINT);
     $filename = './data/pets.json';
-    file_put_contents($filename, $pets_json);
+    file_put_contents($filename, $pets_json);  //var_dump($name, $breed, $weight, $bio);
 
-    //var_dump($name, $breed, $weight, $bio);
+    // Redirect
+    header('Location: /symfonycasts/index.php');
+    die;
+
 
 } elseif ($_SERVER['REQUEST_METHOD'] == "GET") {
     echo "'GET' http request! <br>";
