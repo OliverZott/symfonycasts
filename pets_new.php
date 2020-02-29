@@ -47,7 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
      */
 
     $pets = get_pets();
-    //var_dump($pets);
 
     // $age and $filename not yet defined
     $newPet = array(
@@ -61,9 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $pets[] = $newPet;
 
-    $pets_json = json_encode($pets, JSON_PRETTY_PRINT);
-    $filename = './data/pets.json';
-    file_put_contents($filename, $pets_json);  //var_dump($name, $breed, $weight, $bio);
+    // call function in /lib to save pet-array to json
+    save_pets($pets);
 
     // Redirect
     header('Location: /symfonycasts/index.php');
